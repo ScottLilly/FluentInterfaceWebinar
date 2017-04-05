@@ -1,0 +1,43 @@
+    public interface ICanSetFromDate
+    {
+    }
+
+    public interface ICanSetToDate
+    {
+    }
+
+    public interface ICanSetAllOrOneSalesperson
+    {
+    }
+
+    public interface ICanSetAllOrOneCategory
+    {
+    }
+
+    public interface ICanAddSalespersonIDOrSetCategories
+    {
+    }
+
+    public interface ICanSetGroupBy
+    {
+    }
+
+    public interface ICanAddCategoryIDOrSetGroupBy
+    {
+    }
+
+    public interface ICanSetSortBy
+    {
+    }
+
+    public interface ICanSetReturnedOrdersInclusion
+    {
+    }
+
+    public interface ICanSetUnshippedOrdersInclusion
+    {
+    }
+
+    public interface ICanBuildReport
+    {
+    }

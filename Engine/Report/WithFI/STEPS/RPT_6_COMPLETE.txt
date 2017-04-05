@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Engine.Report.WithFI
 {
-    public class ReportGenerator : ICanSetFromDate, ICanSetToDate,
-        ICanSetAllOrOneSalesperson, ICanSetAllOrOneCategory,
-        ICanAddSalespersonIDOrSetCategories, ICanSetGroupBy,
-        ICanAddCategoryIDOrSetGroupBy, ICanSetSortBy,
-        ICanSetReturnedOrdersInclusion, ICanSetUnshippedOrdersInclusion,
+    public class ReportGenerator : ICanSetFromDate, ICanSetToDate, 
+        ICanSetAllOrOneSalesperson, ICanSetAllOrOneCategory, 
+        ICanAddSalespersonIDOrSetCategories, ICanSetGroupBy, 
+        ICanAddCategoryIDOrSetGroupBy, ICanSetSortBy, 
+        ICanSetReturnedOrdersInclusion, ICanSetUnshippedOrdersInclusion, 
         ICanBuildReport
     {
         #region Enums
@@ -45,21 +45,10 @@ namespace Engine.Report.WithFI
         {
         }
 
-        private ReportGenerator(DateTime from, DateTime to)
-        {
-            _from = from;
-            _to = to;
-        }
-
         // Instantiating functions
         public static ICanSetFromDate CreateSalesReport()
         {
             return new ReportGenerator();
-        }
-
-        public static ICanSetAllOrOneSalesperson CreateSalesReportForDateRange(DateTime from, DateTime to)
-        {
-            return new ReportGenerator(from, to);
         }
 
         // Chaining functions

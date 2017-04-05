@@ -12,7 +12,7 @@ namespace Engine.DB.WithFI
                 .UsingUserNamed("MyUserId")
                 .WithPasswordOf("MyUserPassword")
                 .InTable("Account")
-               .DeleteRowsWhereColumn("LastLoginDate")
+                .DeleteRowsWhereColumn("LastLoginDate")
                 .IsLessThan(DateTime.UtcNow.AddYears(-1));
         }
 

@@ -1,0 +1,34 @@
+using System;
+using System.Collections.Generic;
+
+namespace Engine.Report.WithFI
+{
+    public class ReportGenerator
+    {
+        #region Enums
+
+        public enum GroupingMethod
+        {
+            None,
+            Salesperson,
+            Office,
+            Department
+        }
+
+        public enum SortMethod
+        {
+            DateAscending,
+            DateDescending,
+            OrderTotalAscending,
+            OrderTotalDescending
+        }
+
+        #endregion
+
+		// Instantiating functions
+
+		// Chaining functions
+
+		// Ending functions
+    }
+}

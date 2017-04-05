@@ -1,13 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 
 namespace Engine.Report.WithFI
 {
-    public class ReportGenerator : ICanSetFromDate, ICanSetToDate,
-        ICanSetAllOrOneSalesperson, ICanSetAllOrOneCategory,
-        ICanAddSalespersonIDOrSetCategories, ICanSetGroupBy,
-        ICanAddCategoryIDOrSetGroupBy, ICanSetSortBy,
-        ICanSetReturnedOrdersInclusion, ICanSetUnshippedOrdersInclusion,
+    public class ReportGenerator : ICanSetFromDate, ICanSetToDate, 
+        ICanSetAllOrOneSalesperson, ICanSetAllOrOneCategory, 
+        ICanAddSalespersonIDOrSetCategories, ICanSetGroupBy, 
+        ICanAddCategoryIDOrSetGroupBy, ICanSetSortBy, 
+        ICanSetReturnedOrdersInclusion, ICanSetUnshippedOrdersInclusion, 
         ICanBuildReport
     {
         #region Enums
@@ -45,21 +45,10 @@ namespace Engine.Report.WithFI
         {
         }
 
-        private ReportGenerator(DateTime from, DateTime to)
-        {
-            _from = from;
-            _to = to;
-        }
-
         // Instantiating functions
         public static ICanSetFromDate CreateSalesReport()
         {
             return new ReportGenerator();
-        }
-
-        public static ICanSetAllOrOneSalesperson CreateSalesReportForDateRange(DateTime from, DateTime to)
-        {
-            return new ReportGenerator(from, to);
         }
 
         // Chaining functions
@@ -146,63 +135,45 @@ namespace Engine.Report.WithFI
 
     public interface ICanSetFromDate
     {
-        ICanSetToDate From(DateTime from);
     }
 
     public interface ICanSetToDate
     {
-        ICanSetAllOrOneSalesperson To(DateTime to);
     }
 
     public interface ICanSetAllOrOneSalesperson
     {
-        ICanSetAllOrOneCategory IncludeAllSalespeople();
-        ICanAddSalespersonIDOrSetCategories IncludeSalespersonID(int id);
     }
 
     public interface ICanSetAllOrOneCategory
     {
-        ICanSetGroupBy IncludeAllCategories();
-        ICanAddCategoryIDOrSetGroupBy IncludeCategoryID(int id);
     }
 
     public interface ICanAddSalespersonIDOrSetCategories
     {
-        ICanAddSalespersonIDOrSetCategories IncludeSalespersonID(int id);
-        ICanSetGroupBy IncludeAllCategories();
-        ICanAddCategoryIDOrSetGroupBy IncludeCategoryID(int id);
     }
 
     public interface ICanSetGroupBy
     {
-        ICanSetSortBy GroupBy(ReportGenerator.GroupingMethod groupBy);
     }
 
     public interface ICanAddCategoryIDOrSetGroupBy
     {
-        ICanAddCategoryIDOrSetGroupBy IncludeCategoryID(int id);
-        ICanSetSortBy GroupBy(ReportGenerator.GroupingMethod groupBy);
     }
 
     public interface ICanSetSortBy
     {
-        ICanSetReturnedOrdersInclusion SortBy(ReportGenerator.SortMethod sortBy);
     }
 
     public interface ICanSetReturnedOrdersInclusion
     {
-        ICanSetUnshippedOrdersInclusion IncludeReturnedOrders();
-        ICanSetUnshippedOrdersInclusion ExcludeReturnedOrders();
     }
 
     public interface ICanSetUnshippedOrdersInclusion
     {
-        ICanBuildReport IncludeUnshippedOrders();
-        ICanBuildReport ExcludeUnshippedOrders();
     }
 
     public interface ICanBuildReport
     {
-        object BuildReport();
     }
 }

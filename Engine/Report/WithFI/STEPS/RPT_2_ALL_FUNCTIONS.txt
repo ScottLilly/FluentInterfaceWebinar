@@ -1,0 +1,130 @@
+using System;
+using System.Collections.Generic;
+
+namespace Engine.Report.WithFI
+{
+    public class ReportGenerator
+    {
+        #region Enums
+
+        public enum GroupingMethod
+        {
+            None,
+            Salesperson,
+            Office,
+            Department
+        }
+
+        public enum SortMethod
+        {
+            DateAscending,
+            DateDescending,
+            OrderTotalAscending,
+            OrderTotalDescending
+        }
+
+        #endregion
+
+        private DateTime _from;
+        private DateTime _to;
+        private bool _includeAllSalespeople;
+        private List<int> _includedSalespeopleIDs = new List<int>();
+        private bool _includeAllCategories;
+        private List<int> _includedCategoryIDs = new List<int>();
+        private GroupingMethod _groupBy;
+        private SortMethod _sortBy;
+        private bool _includeReturnedOrders;
+        private bool _includeUnshippedOrders;
+
+        private ReportGenerator()
+        {
+        }
+
+        // Instantiating functions
+        public static ReportGenerator CreateSalesReport()
+        {
+            return new ReportGenerator();
+        }
+
+        // Chaining functions
+        public ReportGenerator From(DateTime from)
+        {
+            _from = from;
+            return this;
+        }
+
+        public ReportGenerator To(DateTime to)
+        {
+            _to = to;
+            return this;
+        }
+
+        public ReportGenerator IncludeAllSalespeople()
+        {
+            _includeAllSalespeople = true;
+            return this;
+        }
+
+        public ReportGenerator IncludeSalespersonID(int id)
+        {
+            _includedSalespeopleIDs.Add(id);
+            return this;
+        }
+
+        public ReportGenerator IncludeAllCategories()
+        {
+            _includeAllCategories = true;
+            return this;
+        }
+
+        public ReportGenerator IncludeCategoryID(int id)
+        {
+            _includedCategoryIDs.Add(id);
+            return this;
+        }
+
+        public ReportGenerator GroupBy(GroupingMethod groupBy)
+        {
+            _groupBy = groupBy;
+            return this;
+        }
+
+        public ReportGenerator SortBy(SortMethod sortBy)
+        {
+            _sortBy = sortBy;
+            return this;
+        }
+
+        public ReportGenerator IncludeReturnedOrders()
+        {
+            _includeReturnedOrders = true;
+            return this;
+        }
+
+        public ReportGenerator ExcludeReturnedOrders()
+        {
+            _includeReturnedOrders = false;
+            return this;
+        }
+
+        public ReportGenerator IncludeUnshippedOrders()
+        {
+            _includeUnshippedOrders = true;
+            return this;
+        }
+
+        public ReportGenerator ExcludeUnshippedOrders()
+        {
+            _includeUnshippedOrders = false;
+            return this;
+        }
+
+        // Ending functions
+        public object BuildReport()
+        {
+            // This would have the report-generating code here.
+            return new object();
+        }
+
+    }
+}

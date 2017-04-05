@@ -60,6 +60,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="READ_ME.txt" />
+    <Content Include="Report\WithFI\STEPS\RPT_1_SHELL.txt" />
+    <Content Include="Report\WithFI\STEPS\RPT_2_ALL_FUNCTIONS.txt" />
+    <Content Include="Report\WithFI\STEPS\RPT_3_INTERFACES.txt" />
+    <Content Include="Report\WithFI\STEPS\RPT_4_IMPLEMENT_INTERFACES.txt" />
+    <Content Include="Report\WithFI\STEPS\RPT_5_FUNCTIONS_RETURN_INTERFACES.txt" />
+    <Content Include="Report\WithFI\STEPS\RPT_6_COMPLETE.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
