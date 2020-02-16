@@ -1,0 +1,1 @@
+ : ICanSetFromDate, ICanSetToDate, ICanSetAllOrOneSalesperson, ICanSetAllOrOneCategory, ICanAddSalespersonIDOrSetCategories, ICanSetGroupBy, ICanAddCategoryIDOrSetGroupBy, ICanSetSortBy, ICanSetReturnedOrdersInclusion, ICanSetUnshippedOrdersInclusion, ICanBuildReport
