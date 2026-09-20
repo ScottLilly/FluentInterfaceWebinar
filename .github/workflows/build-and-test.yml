@@ -1,0 +1,39 @@
+# Builds the solution on a clean machine, which is the thing a local build cannot prove: that
+# nothing depends on something only this working copy has.
+#
+# Runs on every push to master and on pull requests against it, so the build status is always
+# current. Also available from the Actions tab for a run on a clean machine without pushing
+# anything.
+#
+# Engine.csproj is an old style project targeting .NET Framework 4.5.2, so dotnet build cannot
+# build it. windows-latest and .NET Framework MSBuild are what it needs.
+
+name: Build and Test
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+
+    runs-on: windows-latest
+
+    steps:
+      - name: Check out
+        uses: actions/checkout@v7
+
+      - name: Add MSBuild to PATH
+        uses: microsoft/setup-msbuild@v3
+
+      - name: Restore
+        run: msbuild FluentInterfaceWebinar.sln -t:Restore -p:Configuration=Release
+
+      - name: Build
+        run: msbuild FluentInterfaceWebinar.sln -p:Configuration=Release
