@@ -5,8 +5,8 @@
 # current. Also available from the Actions tab for a run on a clean machine without pushing
 # anything.
 #
-# Engine.csproj is an old style project targeting .NET Framework 4.5.2, so dotnet build cannot
-# build it. windows-latest and .NET Framework MSBuild are what it needs.
+# Engine.csproj is an old style project targeting .NET Framework, so dotnet build cannot build
+# it. windows-latest and .NET Framework MSBuild are what it needs.
 
 name: Build and Test
 
@@ -19,14 +19,6 @@ on:
 
 permissions:
   contents: read
-
-env:
-  # The runner image carries the 4.8 targeting pack and nothing older, so a build left at the
-  # project's own v4.5.2 fails with MSB3644 before it compiles a line. Overriding it here keeps
-  # the override in CI rather than retargeting a webinar demo that still builds locally on a
-  # machine with the older Developer Pack installed. The project references nothing but the BCL,
-  # so 4.8 compiles the same source.
-  TARGET_FRAMEWORK_VERSION: v4.8
 
 jobs:
   build:
@@ -41,7 +33,7 @@ jobs:
         uses: microsoft/setup-msbuild@v3
 
       - name: Restore
-        run: msbuild FluentInterfaceWebinar.sln -t:Restore -p:Configuration=Release -p:TargetFrameworkVersion=${{ env.TARGET_FRAMEWORK_VERSION }}
+        run: msbuild FluentInterfaceWebinar.sln -t:Restore -p:Configuration=Release
 
       - name: Build
-        run: msbuild FluentInterfaceWebinar.sln -p:Configuration=Release -p:TargetFrameworkVersion=${{ env.TARGET_FRAMEWORK_VERSION }}
+        run: msbuild FluentInterfaceWebinar.sln -p:Configuration=Release
